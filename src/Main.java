@@ -2,11 +2,14 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) {
         fileWritterExample();
-        fileReaderExample();
+        //fileReaderExample();
+        pathExample();
     }
 
     public static void fileWritterExample() {
@@ -35,10 +38,25 @@ public class Main {
 
             int data;
             while ((data = reader.read()) != -1) {
-                if (Character.isLetter(data)) { // Фильтруем только буквы
+                if (Character.isLetter(data)) {
                     System.out.print((char) data);
                 }
             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void pathExample() {
+        try {
+            Path path = Path.of("example.txt");
+            Files.writeString(path, "Hello, Java 11!");
+            String content = Files.readString(path);
+            Files.copy(path, Path.of("example-copy.txt"));
+            System.out.println(content);
+            System.out.println(Files.size(path));
+            System.out.println(Files.getLastModifiedTime(path));
 
 
         } catch (IOException e) {
