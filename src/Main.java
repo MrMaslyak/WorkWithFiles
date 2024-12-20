@@ -53,11 +53,13 @@ public class Main {
             Path path = Path.of("example.txt");
             Files.writeString(path, "Hello, Java 11!");
             String content = Files.readString(path);
-            Files.copy(path, Path.of("example-copy.txt"));
             System.out.println(content);
             System.out.println(Files.size(path));
             System.out.println(Files.getLastModifiedTime(path));
-
+            System.out.println(Files.getOwner(path));
+            System.out.println(Files.exists(path));
+            System.out.println(Files.isDirectory(path));
+            System.out.println(Files.isRegularFile(path));
 
         } catch (IOException e) {
             e.printStackTrace();
