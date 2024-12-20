@@ -1,0 +1,5 @@
+
+1 Buffered writing is faster.
+2 This is another line.
+Hello!
+Hello
